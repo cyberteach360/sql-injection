@@ -71,6 +71,7 @@ OR
 ### For RCE , Call Upload Web shell 
 
 Example :
+          
           url/upload_file.php?parameter=commnad
 
           http://cyberteach360/shell.php?cmd=id
