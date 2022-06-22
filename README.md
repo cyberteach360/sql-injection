@@ -15,6 +15,27 @@ Some True Statement Payload :
                    ' or '1' = '1 -- -
                    ' or '1' = '1 #                         
 ##### 👁️‍🗨️ For More Payload check payload all things github repo https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
+## In-Band SQL Injection
+In simple cases, the output of both the intended and the new query may be printed directly on the front end, and we can directly read it. This is known as In-band SQL injection, and it has two types: **Union Based and Error Based.**
+
+##### Error Based :
+                           Get the PHP or SQL errors in the front-end
+##### Union Based:
+                          Get Fixed Column number and Uses Union query to get database information
+
+## How to Indentify Error Based SQL Injection
+#### Step1:
+           Find out injection parameter using fuzzing tools or manually
+#### Step2:
+           Use Given below payoad
+
+         Payload 	URL Encoded
+              ' 	%27
+              " 	%22
+              # 	%23
+              ; 	%3B
+              ) 	%29
+If we get sql error , there has error based SQL injection and then, Use SQL Map for Automatic SQL Injection Pen-Testing / Manually Testing
 
 ## Union Base SQL Injection
 ## Method for dumping data from database using Uninon SQL Injection
