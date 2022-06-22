@@ -7,7 +7,7 @@ SQL injection attacks are a type of injection attack, in which SQL commands are 
 ![sql](https://user-images.githubusercontent.com/79256105/175160165-af1189b5-f22c-41fa-8d8e-7e4e1d14da57.png)
 
 ## Authentication Bypass(Subverting Query Logic)
-Subverting Query Login used to bypass authenticatio of login page . In this technique, hacker used true statement ' or 1=1 / ' or '1'='1'-- - to bypass application query or user credentials matching.
+Subverting Query Login used to bypass authenticatio of login page . In this technique, hacker used true statement **' or 1=1 / ' or '1'='1'-- -** to bypass application query or user credentials matching.
 Some True Statement Payload :
                    
                    ' or '1' = '1
