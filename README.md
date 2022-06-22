@@ -77,3 +77,17 @@ Example :
           url/upload_file.php?parameter=commnad
 
           http://cyberteach360/shell.php?cmd=id
+          
+
+## Practicing and Learning Resources:
+
+#### Try Hack Me :
+
+      https://tryhackme.com/room/sqlinjectionlm
+      https://tryhackme.com/room/sqhell
+
+#### Hack The Box Academy :
+
+      https://academy.hackthebox.com/module/33/section/177
+
+#### Port Swigger:         
