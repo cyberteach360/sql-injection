@@ -36,7 +36,7 @@ In simple cases, the output of both the intended and the new query may be printe
               ; 	%3B
               ) 	%29
 If we get sql error , there has error based SQL injection and then, Use SQL Map for Automatic SQL Injection Pen-Testing / Manually Testing
-
+##### 👁️‍🗨️ For More Payload check payload all things github repo https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
 ## Union Base SQL Injection
 ## Method for dumping data from database using Uninon SQL Injection
 
