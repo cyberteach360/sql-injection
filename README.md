@@ -4,7 +4,7 @@
 # What is SQL Injection?
 SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to affect the execution of predefined SQL commands.
 # Types of SQL Injection
-https://www.simplilearn.com/tutorials/cyber-security-tutorial/what-is-sql-injection
+![sql](https://user-images.githubusercontent.com/79256105/175160165-af1189b5-f22c-41fa-8d8e-7e4e1d14da57.png)
 
 ## Union Base SQL Injection
 ## Method for dumping data from database using Uninon SQL Injection
