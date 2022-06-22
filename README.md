@@ -37,7 +37,17 @@ In simple cases, the output of both the intended and the new query may be printe
               ) 	%29
 If we get sql error , there has error based SQL injection and then, Use SQL Map for Automatic SQL Injection Pen-Testing / Manually Testing
 ##### 👁️‍🗨️ For More Payload check payload all things github repo https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
-## Union Base SQL Injection
+## How to identify Union Base SQL Injection
+#### Step1:
+          find out actual column number using order by  / order by -- - operation
+#### Step2:
+            use actual column number with union operation
+            example: ‘ union select 1,2,3-- - 
+#### Step3:
+           check which column number show in your target website
+#### Step4:
+           use union base payload in perfect column number to exploit database
+
 ## Method for dumping data from database using Uninon SQL Injection
 
 ##### Schema,Schemata check
