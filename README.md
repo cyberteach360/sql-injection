@@ -1,6 +1,10 @@
 # SQL Injection
 ![sql-injection](https://user-images.githubusercontent.com/79256105/172219613-c1e688dc-d2fc-4a1c-9e56-35cb868ae5f2.png)
 
+# What is SQL Injection?
+SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to affect the execution of predefined SQL commands.
+# Types of SQL Injection
+https://www.simplilearn.com/tutorials/cyber-security-tutorial/what-is-sql-injection
 
 ## Union Base SQL Injection
 ## Method for dumping data from database using Uninon SQL Injection
