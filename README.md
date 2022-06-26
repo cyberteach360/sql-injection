@@ -138,4 +138,5 @@ Example :
       https://academy.hackthebox.com/module/33/section/177
 
 #### Port Swigger:         
+     https://portswigger.net/web-security/sql-injection
      
