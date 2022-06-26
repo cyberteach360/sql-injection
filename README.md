@@ -91,6 +91,8 @@ Where username and password are column name , dev is database name , credentials
 Now that we know we have enough privileges to read local system files, let us do that using the LOAD_FILE() function. The LOAD_FILE() function can be used in MariaDB / MySQL to read data from files. The function takes in just one argument, which is the file name. The following query is an example of how to read the /etc/passwd file:
 
       SELECT LOAD_FILE('/etc/passwd');
+      
+      Example:
       ' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -
 
 #### Another Example
@@ -136,3 +138,4 @@ Example :
       https://academy.hackthebox.com/module/33/section/177
 
 #### Port Swigger:         
+     
