@@ -148,7 +148,7 @@ if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column number is
       
 Sequentially change the character and check the respons is true or flase
 suppose we got the table name  :users
-Step 4:Find out Column name
+#### Step 4:Find out Column name
      
      1.admin123' UNION SELECT 1,2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%' and COLUMN_NAME !='id';
 
