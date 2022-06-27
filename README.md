@@ -131,7 +131,7 @@ Boolean based SQL Injection refers to the response we receive back from our inje
 
       1.admin123' UNION SELECT 1;-- 
       2.admin123' UNION SELECT 1,2,3;--
-if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column ***number is 3 ***
+if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column ***number is 3***
 
 #### Step 2:Find out database name
 
