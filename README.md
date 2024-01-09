@@ -42,7 +42,7 @@ If we get sql error , there has error based SQL injection and then, Use SQL Map 
           find out actual column number using order by  / order by -- - operation
 #### Step2:
             use actual column number with union operation
-            example: ‘ union select 1,2,3-- - 
+            example: ' union select 1,2,3-- - 
 #### Step3:
            check which column number show in your target website
 #### Step4:
@@ -123,7 +123,7 @@ Example :
           
           url/upload_file.php?parameter=commnad
 
-          http://cyberteach360/shell.php?cmd=id
+          http://cyberteach360.com.bd/shell.php?cmd=id
 # Boolean Based SQL Injection
 Boolean based SQL Injection refers to the response we receive back from our injection attempts which could be a true/false, yes/no, on/off, 1/0 or any response which can only ever have two outcomes. That outcome confirms to us that our SQL Injection payload was either successful or not. On the first inspection, you may feel like this limited response can't provide much information. Still, in fact, with just these two responses, it's possible to enumerate a whole database structure and contents.
 
